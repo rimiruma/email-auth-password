@@ -12,7 +12,8 @@ const Register = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        const accepted = e.target.terms.checked;
+        console.log(email, password, accepted);
 
         // reset error
         setRegisterError('');
@@ -25,6 +26,10 @@ const Register = () => {
 
         else if (!/[A-Z]/.test(password)) {
             setRegisterError('Your password should have at least one upper case charactrs.')
+            return;
+        }
+        else if(!accepted){
+            setRegisterError('plase accept our terms and conditions!')
             return;
         }
 
